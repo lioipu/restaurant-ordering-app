@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+} 
+
+.banner {
+    display: block;
+    width: 600px;
+    height: 170px;
+    background-image: url(images/burger-banner.jpeg);
+    background-repeat: no-repeat;
+    background-position:0% 65%;
+    background-size:600px;
+    color: white;
+    margin: auto;
+} 
+
+h1 {
+    font-family: Smythe;
+    font-size: 40;
+    font-weight: 400;
+    margin: 0 0 0 0;
+    padding: 46 0 0 46;
+    font-family: Smythe;
+
+}
+
+h2 {
+    font-family: Smythe;
+    font-size: 22;
+    font-weight:400;
+    margin: 5 0 0 0;
+    padding: 0 0 0 46;
+    font-family: Smythe;
+
+
+}
+
+
+#order-list {
+    display: block;
+    width: 600px;
+    margin: auto auto;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 30px;
+    width: 500px;
+    height: 250px;
+    border-bottom: 1px solid #D2D2D2;
+    margin-bottom: 40px;
+}
+
+#item-info {
+    margin-bottom:10 ;
+}
+
+#logo {
+    padding: 0;
+    font-size: 90px;
+}
+
+h3 {
+    font-family: Smythe;
+    font-weight: 400;
+    font-size: 28px;
+    margin :0 0 6 0;    
+
+}
+
+#extras {
+    margin :0 0 9 0;
+    font-family: Smythe;
+    font-weight: 400;
+    font-size: 16px;
+    color: #8B8B8B;
+    
+    
+}
+
+#price {
+    margin: 0;
+    font-family: Smythe;
+    font-weight: 400;
+    font-size: 20px;
+
+}
+
+#add-item-btn{
+    width: 50px;
+    height: 50px;
+    font-size: 32px;
+    font-weight: 100;
+    background: #3C3C3C;
+    background-color: white;
+    border: 1.5px solid #DEDEDE;
+    border-radius: 50%;
+    margin: 0 0 0 150;
+    
+}
