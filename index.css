@@ -55,6 +55,7 @@ h2 {
 
 #item-info {
     margin-bottom:10 ;
+    width: 148.85;
 }
 
 #logo {
@@ -88,7 +89,7 @@ h3 {
 
 }
 
-#add-item-btn{
+#add-item-btn {
     width: 50px;
     height: 50px;
     font-size: 32px;
@@ -99,4 +100,55 @@ h3 {
     border-radius: 50%;
     margin: 0 0 0 150;
     
+}
+
+#total-order h1 {
+    width: 133px;
+    margin: 0 auto;
+    padding: 0 0 40 0;
+}
+
+#total-order{
+    /* display: block;
+    width: 500px;
+    font-family: Smythe;
+    margin: auto auto;
+    padding: 30 0; */
+
+}
+
+#order-items{
+    display: block;
+    width: 500px;
+    font-family: Smythe;
+    margin: auto auto;
+    padding: 30 0;
+    border-bottom: 2px solid #393333
+
+}
+
+.item-content-sum {
+    display: flex;
+    align-items: center;
+    font-family: Smythe;
+}
+
+#remove-btn{
+    font-family: Smythe;
+    background-color: white;
+    color: #BBBBBB;
+    border: none;
+
+}
+
+#total-order #price {
+    margin: 0 0 0 0;
+    margin-left: auto;
+
+}
+
+#name{
+    font-size: 30px;
+    margin: 0 0 0 0;
+
 }
