@@ -109,11 +109,12 @@ h3 {
 }
 
 #total-order{
-    /* display: block;
+    display: block;
     width: 500px;
+    flex-wrap: wrap;
     font-family: Smythe;
     margin: auto auto;
-    padding: 30 0; */
+    padding: 30 0;
 
 }
 
@@ -121,7 +122,7 @@ h3 {
     display: block;
     width: 500px;
     font-family: Smythe;
-    margin: auto auto;
+    margin: 30 auto;
     padding: 30 0;
     border-bottom: 2px solid #393333
 
@@ -151,4 +152,83 @@ h3 {
     font-size: 30px;
     margin: 0 0 0 0;
 
+}
+
+#complete-order{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30;
+}
+#complete-order-btn ,#pay-btn button{
+    flex-basis: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+    font-family: Verdana;
+    font-size: 16px;
+    height: 60;
+    border-radius: 3px;
+    border: none;
+    background: #16DB99;
+
+}
+
+#card-details{
+        font-family: Verdana;
+        font-weight: 700;
+        font-size: 24px;
+        position: fixed;
+        width: 525;
+        height: 540;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 5.19px 5.19px 255.44px 0px #00000080;
+
+}
+
+
+#title{
+    display: block;
+    width:238px;
+    margin :50 auto;
+    
+    
+    
+}
+
+#input-card-info input{
+    font-family: Verdana;
+    font-size: 20px;
+    width: 475;
+    height: 70;
+    margin-top: 20;
+    padding-left: 26;
+
+}
+
+#input-card-info{
+    display: block;
+    width:475px;
+    margin :50 auto;
+    
+}
+
+#pay-btn button{
+    display: block;
+    width:475px;
+    margin :50 auto;
+
+}
+
+.hidden{
+    display:none;
+}
+
+input{
+    display: block;
 }
