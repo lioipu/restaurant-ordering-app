@@ -22,5 +22,5 @@ export const menuArray = [
         emoji: "🍺",
         id: 2,
         amount: 0
-    }
+    },
 ]

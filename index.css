@@ -114,7 +114,7 @@ h3 {
     flex-wrap: wrap;
     font-family: Smythe;
     margin: auto auto;
-    padding: 30 0;
+    padding: 0 0 30 0;
 
 }
 
@@ -122,7 +122,7 @@ h3 {
     display: block;
     width: 500px;
     font-family: Smythe;
-    margin: 30 auto;
+    margin: 0 auto 30 auto;
     padding: 30 0;
     border-bottom: 2px solid #393333
 
@@ -154,12 +154,18 @@ h3 {
 
 }
 
+#discount{
+    padding-top: 20px;
+    color: #AA4A44
+    ;
+}
+
 #complete-order{
     display: flex;
     flex-wrap: wrap;
     margin-top: 30;
 }
-#complete-order-btn ,#pay-btn button{
+#complete-order-btn ,#pay-btn{
     flex-basis: 100%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
@@ -218,7 +224,7 @@ h3 {
     
 }
 
-#pay-btn button{
+#pay-btn{
     display: block;
     width:475px;
     margin :50 auto;
@@ -231,4 +237,24 @@ h3 {
 
 input{
     display: block;
+}
+
+#final-msg{
+    font-family: Smythe;
+    background: #ECFDF5;
+    color: #065F46;
+    font-size: 32px;
+    padding: 50 60;
+    margin: 0 auto 40 auto;
+    padding: 0;
+    width: 500;
+    height: 120;
+    border-radius: 3px;
+}
+
+#final-msg p{
+    width: 378;
+    margin: 0 auto;
+    padding: 41 0;
+
 }
