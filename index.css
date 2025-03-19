@@ -220,14 +220,23 @@ h3 {
 #input-card-info{
     display: block;
     width:475px;
-    margin :50 auto;
+    height: 300px;
+    margin :50 auto 20 auto;
     
+}
+
+#error-message{
+    font-family: Verdana;
+    color: #AA4A44;
+    font-size: large;
+    margin: 20 0 0 2;
+    padding: 0;
 }
 
 #pay-btn{
     display: block;
     width:475px;
-    margin :50 auto;
+    margin :20 auto 50 auto;
 
 }
 

@@ -1,25 +1,31 @@
 import {menuArray} from '/data.js'
 import {discountObj} from '/data.js'
 
-const _DISCOUNT = 0.5
+const DISCOUNT_RATE = 0.5;
+const ITEM_IDS = {
+    PIZZA: '0',
+    HAMBURGER: '1',
+    BEER: '2',
+}
+
 let totalItems = []
 let isClicked = false
 let isOrdered = false
 
 
 document.addEventListener('click', e => {
-    if(e.target.dataset.addItemBtn === '0'){
-        handlePizzaClickItemBtn()
-    } else if(e.target.dataset.addItemBtn === '1'){
-        handleHamburgerClickItemBtn()
-    } else if(e.target.dataset.addItemBtn === '2'){
-        handleBeerClickItemBtn()
-    } else if(e.target.dataset.rmItemBtn === '0'){
-        handleRemoveClickPizzaBtn()
-    } else if(e.target.dataset.rmItemBtn === '1'){
-        handleRemoveClickHamburgerBtn()
-    } else if(e.target.dataset.rmItemBtn === '2'){
-        handleRemoveClickBeerBtn()
+    if(e.target.dataset.addItemBtn === ITEM_IDS.PIZZA){
+        handleClickAddItemBtn(menuArray[0].name)
+    } else if(e.target.dataset.addItemBtn === ITEM_IDS.HAMBURGER){
+        handleClickAddItemBtn(menuArray[1].name)
+    } else if(e.target.dataset.addItemBtn === ITEM_IDS.BEER){
+        handleClickAddItemBtn(menuArray[2].name)
+    } else if(e.target.dataset.rmItemBtn === ITEM_IDS.PIZZA){
+        handleClickRemoveItemBtn(menuArray[0].name)
+    } else if(e.target.dataset.rmItemBtn === ITEM_IDS.HAMBURGER){
+        handleClickRemoveItemBtn(menuArray[1].name)
+    } else if(e.target.dataset.rmItemBtn === ITEM_IDS.BEER){
+        handleClickRemoveItemBtn(menuArray[2].name)
     } else if(e.target.id === "complete-order-btn"){
         handleClickCompleteOrderBtn()
     } else if(!e.target.dataset.cardDetails){
@@ -29,9 +35,9 @@ document.addEventListener('click', e => {
     }
 })
 
+// localStorage.clear()
 if(localStorage.getItem('totalItems')){
     totalItems = JSON.parse(localStorage.getItem('totalItems'))
-    console.log(totalItems)
 
 } 
 
@@ -40,31 +46,24 @@ function saveToLocalStorage(){
     localStorage.setItem('totalItems', JSON.stringify(totalItems))
 }
 
-function discount(){
-    let disc
-    let firstItem = totalItems.find(item => item.name === 'Pizza')
-    let secondItem = totalItems.find(item => item.name === 'Beer')
-    if(firstItem && secondItem){
-        if(firstItem.amount > secondItem.amount){
-            disc =  (( secondItem.price * secondItem.amount ) +
-                    ( firstItem.price * secondItem.amount ) ) * 
-                    _DISCOUNT
-        } else {
-            disc =  (( firstItem.price * firstItem.amount ) +
-                    ( secondItem.price * firstItem.amount ) ) * 
-                    _DISCOUNT
-        }
-    } else {
-        return 0
+function discount() {
+    const discountableItems = ['Pizza', 'Beer']; // Can be extended 
+    const items = discountableItems.map(name => 
+        totalItems.find(item => item.name === name)).filter(Boolean);
+
+    if (items.length === 2) {
+        const [firstItem, secondItem] = items;
+        const minAmount = Math.min(firstItem.amount, secondItem.amount);
+        return ((firstItem.price + secondItem.price) * minAmount) * DISCOUNT_RATE;
     }
-    return disc
+    return 0;
 }
 
-function handlePizzaClickItemBtn(){
-    let tmp = totalItems.find(item => item.name ==='Pizza')
+function handleClickAddItemBtn(itemName){
+    let tmp = totalItems.find(item => item.name === itemName)
     if(!tmp){
-        totalItems.push(menuArray[0])
-        totalItems.find(item => item.name ==='Pizza').amount++
+        totalItems.push(menuArray.find(item => item.name === itemName))
+        totalItems.find(item => item.name === itemName).amount++
     } else {
         tmp.amount++
     }
@@ -73,35 +72,8 @@ function handlePizzaClickItemBtn(){
     render()
 }
 
-function handleHamburgerClickItemBtn(){
-    let tmp = totalItems.find(item => item.name ==='Hamburger')
-    if(!tmp){
-        totalItems.push(menuArray[1])
-        totalItems.find(item => item.name ==='Hamburger').amount++
-    } else {
-        tmp.amount++
-    }
-    isOrdered = false
-    saveToLocalStorage()
-    render()
-}
-
-function handleBeerClickItemBtn(){
-    let tmp = totalItems.find(item => item.name ==='Beer')
-    if(!tmp){
-        totalItems.push(menuArray[2])
-        totalItems.find(item => item.name ==='Beer').amount++
-    } else {
-        tmp.amount++
-    }
-    isOrdered = false
-    saveToLocalStorage()
-    render()
-
-}
-
-function handleRemoveClickPizzaBtn(){
-    let tmp = totalItems.find(item => item.name === 'Pizza')
+function handleClickRemoveItemBtn(itemName){
+    let tmp = totalItems.find(item => item.name === itemName)
     if( ( --tmp.amount ) < 1){
         totalItems.splice(totalItems.indexOf(tmp), 1)
     }
@@ -109,23 +81,6 @@ function handleRemoveClickPizzaBtn(){
     render()
 }
 
-function handleRemoveClickHamburgerBtn(){
-    let tmp = totalItems.find(item => item.name === 'Hamburger')
-    if( ( --tmp.amount ) < 1){
-        totalItems.splice(totalItems.indexOf(tmp), 1)
-    }
-    saveToLocalStorage()
-    render()
-}
-
-function handleRemoveClickBeerBtn(){
-    let tmp = totalItems.find(item => item.name === 'Beer')
-    if( ( --tmp.amount ) < 1){
-        totalItems.splice(totalItems.indexOf(tmp), 1)
-    }
-    saveToLocalStorage()
-    render()
-}
 
 function handleClickCompleteOrderBtn(){
     if(isClicked){
@@ -142,22 +97,26 @@ function handleClickAnywhere(){
 }
 
 function handleClickPayBtn(){
-    isOrdered = true
-    isClicked = false
-    const inputCardInfoChildrens = document.getElementById('input-card-info').children
-    for(const children of inputCardInfoChildrens){
-        if(children.value === ''){
-            throw Error('one or more input field is not filled')
+    const inputCardInfoChildren = document.getElementById('input-card-info').children
+    for(const child of inputCardInfoChildren){
+        if(child.value === ''){
+            document.getElementById('error-message').innerText = 'Please fill in all fields.';
+            return
         }
     }
-    for(const children of inputCardInfoChildrens) {
-        children.value = ''
+    document.getElementById('error-message').innerText = ''; // Clear error message
+    for(const child of inputCardInfoChildren) {
+        child.value = ''
     }
+
+    isClicked = false
+    isOrdered = true
 
     while(totalItems.length > 0){
         totalItems.pop().amount = 0
     }
-    console.log(totalItems.length)
+    totalItems = []
+    saveToLocalStorage()
     render()
 }
 
@@ -233,7 +192,9 @@ function getOrderListHtml() {
                 <input placeholder="Enter your name" data-card-details="card-details">
                 <input placeholder="Enter your number" data-card-details="card-details">
                 <input placeholder="Enter CVV" data-card-details="card-details">
+                <div id="error-message"></div>
             </div>
+            
             <div data-card-details="card-details">
                 <button id="pay-btn" data-card-details="card-details">Pay</button>
             </div>
