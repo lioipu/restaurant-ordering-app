@@ -1,13 +1,11 @@
 import {menuArray} from '/data.js'
+import {discountObj} from '/data.js'
 
 const _DISCOUNT = 0.5
 let totalItems = []
 let isClicked = false
 let isOrdered = false
-let discountObj = {
-    name: "meal deal",
-    discount: 0
-}
+
 
 document.addEventListener('click', e => {
     if(e.target.dataset.addItemBtn === '0'){
@@ -33,8 +31,10 @@ document.addEventListener('click', e => {
 
 if(localStorage.getItem('totalItems')){
     totalItems = JSON.parse(localStorage.getItem('totalItems'))
+    console.log(totalItems)
 
-}
+} 
+
 
 function saveToLocalStorage(){
     localStorage.setItem('totalItems', JSON.stringify(totalItems))
@@ -61,9 +61,12 @@ function discount(){
 }
 
 function handlePizzaClickItemBtn(){
-    menuArray[0].amount++
-    if(!totalItems.includes(menuArray[0])){
+    let tmp = totalItems.find(item => item.name ==='Pizza')
+    if(!tmp){
         totalItems.push(menuArray[0])
+        totalItems.find(item => item.name ==='Pizza').amount++
+    } else {
+        tmp.amount++
     }
     isOrdered = false
     saveToLocalStorage()
@@ -71,9 +74,12 @@ function handlePizzaClickItemBtn(){
 }
 
 function handleHamburgerClickItemBtn(){
-    menuArray[1].amount++
-    if(!totalItems.includes(menuArray[1])){
+    let tmp = totalItems.find(item => item.name ==='Hamburger')
+    if(!tmp){
         totalItems.push(menuArray[1])
+        totalItems.find(item => item.name ==='Hamburger').amount++
+    } else {
+        tmp.amount++
     }
     isOrdered = false
     saveToLocalStorage()
@@ -81,34 +87,41 @@ function handleHamburgerClickItemBtn(){
 }
 
 function handleBeerClickItemBtn(){
-    menuArray[2].amount++
-    if(!totalItems.includes(menuArray[2])){
+    let tmp = totalItems.find(item => item.name ==='Beer')
+    if(!tmp){
         totalItems.push(menuArray[2])
+        totalItems.find(item => item.name ==='Beer').amount++
+    } else {
+        tmp.amount++
     }
     isOrdered = false
     saveToLocalStorage()
     render()
+
 }
 
 function handleRemoveClickPizzaBtn(){
-    if( ( --menuArray[0].amount ) < 1){
-        totalItems.splice(totalItems.indexOf(menuArray[0]), 1)
+    let tmp = totalItems.find(item => item.name === 'Pizza')
+    if( ( --tmp.amount ) < 1){
+        totalItems.splice(totalItems.indexOf(tmp), 1)
     }
     saveToLocalStorage()
     render()
 }
 
 function handleRemoveClickHamburgerBtn(){
-    if( ( --menuArray[1].amount ) < 1){
-        totalItems.splice(totalItems.indexOf(menuArray[1]), 1)
+    let tmp = totalItems.find(item => item.name === 'Hamburger')
+    if( ( --tmp.amount ) < 1){
+        totalItems.splice(totalItems.indexOf(tmp), 1)
     }
     saveToLocalStorage()
     render()
 }
 
 function handleRemoveClickBeerBtn(){
-    if( ( --menuArray[2].amount ) < 1){
-        totalItems.splice(totalItems.indexOf(menuArray[2]), 1)
+    let tmp = totalItems.find(item => item.name === 'Beer')
+    if( ( --tmp.amount ) < 1){
+        totalItems.splice(totalItems.indexOf(tmp), 1)
     }
     saveToLocalStorage()
     render()
@@ -133,10 +146,11 @@ function handleClickPayBtn(){
     isClicked = false
     const inputCardInfoChildrens = document.getElementById('input-card-info').children
     for(const children of inputCardInfoChildrens){
-        
         if(children.value === ''){
-
+            throw Error('one or more input field is not filled')
         }
+    }
+    for(const children of inputCardInfoChildrens) {
         children.value = ''
     }
 

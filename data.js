@@ -1,3 +1,10 @@
+
+export let discountObj = {
+    name: "meal deal",
+    discount: 0
+}
+
+
 export const menuArray = [
     {
         name: "Pizza",
