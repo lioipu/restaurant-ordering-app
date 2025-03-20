@@ -26,7 +26,7 @@ document.addEventListener('click', e => {
         handleClickRemoveItemBtn(menuArray[1].name)
     } else if(e.target.dataset.rmItemBtn === ITEM_IDS.BEER){
         handleClickRemoveItemBtn(menuArray[2].name)
-    } else if(e.target.id === "complete-order-btn"){
+    } else if(e.target.dataset.completeOrderBtn === "complete-order-btn"){
         handleClickCompleteOrderBtn()
     } else if(!e.target.dataset.cardDetails){
         handleClickAnywhere()
@@ -132,7 +132,7 @@ function getOrderListHtml() {
     if(discountObj.discount = discount()){
         discStr += `
                 <div id="discount" class="item-content-sum">
-                    <p id="name">${discountObj.name}</p>
+                    <p class="name">${discountObj.name}</p>
                     <p id="price">- $${discountObj.discount}</p>
                 </div>
         `
@@ -146,7 +146,7 @@ function getOrderListHtml() {
                     <p id="extras">${item.ingredients}</p>
                     <p id="price">$${item.price}</p>
                 </div>
-                <button id="add-item-btn" data-add-item-btn="${item.id}">+</button>
+                <button class="add-item-btn" data-add-item-btn="${item.id}">+</button>
             </div>`
         }).join('')
 
@@ -158,8 +158,8 @@ function getOrderListHtml() {
             totalItems.map(item => {
                 return `
                         <div class="item-content-sum">
-                            <p id="name">${item.name}</p>
-                            <button id="remove-btn" data-rm-item-btn="${item.id}">remove</button>
+                            <p class="name">${item.name}</p>
+                            <button class="remove-btn" data-rm-item-btn="${item.id}">remove</button>
                             <p id="price">$${item.price * item.amount}</p>
                         </div>`
             }).join('')
@@ -170,11 +170,11 @@ function getOrderListHtml() {
             feed += `
                 </div>
                 <div class="item-content-sum">
-                    <p id="name">Total Price:</p>
+                    <p class="name">Total Price:</p>
                     <p id="price">$${sum - discountObj.discount}</p>
                     </div>
                 <div id="complete-order">
-                    <button id="complete-order-btn">Complete order</button>
+                    <button class="complete-order-btn" data-complete-order-btn="complete-order-btn">Complete order</button>
                 </div>
             </div>`            
         } else if(isOrdered){
@@ -196,7 +196,7 @@ function getOrderListHtml() {
             </div>
             
             <div data-card-details="card-details">
-                <button id="pay-btn" data-card-details="card-details">Pay</button>
+                <button id="pay-btn" class="complete-order-btn" data-card-details="card-details">Pay</button>
             </div>
         </div>`
 

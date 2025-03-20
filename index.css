@@ -1,4 +1,5 @@
 body {
+    font-family: Smythe;
     margin: 0;
 } 
 
@@ -15,24 +16,18 @@ body {
 } 
 
 h1 {
-    font-family: Smythe;
-    font-size: 40;
-    font-weight: 400;
-    margin: 0 0 0 0;
-    padding: 46 0 0 46;
-    font-family: Smythe;
+    font-size: 40px;
+    margin: 0px 0px 0px 0px;
+    padding: 46px 0px 0px 46px;
+
 
 }
 
 h2 {
-    font-family: Smythe;
-    font-size: 22;
+    font-size: 22px;
     font-weight:400;
-    margin: 5 0 0 0;
-    padding: 0 0 0 46;
-    font-family: Smythe;
-
-
+    margin: 5px 0px 0px 0px;
+    padding: 0px 0px 0px 46px;
 }
 
 
@@ -64,17 +59,15 @@ h2 {
 }
 
 h3 {
-    font-family: Smythe;
-    font-weight: 400;
+    font-weight: 400px;
     font-size: 28px;
-    margin :0 0 6 0;    
+    margin :0px 0px 6px 0px;
 
 }
 
 #extras {
-    margin :0 0 9 0;
-    font-family: Smythe;
-    font-weight: 400;
+    margin :0px 0px 9px 0px;
+    font-weight: 400px;
     font-size: 16px;
     color: #8B8B8B;
     
@@ -82,48 +75,45 @@ h3 {
 }
 
 #price {
-    margin: 0;
-    font-family: Smythe;
-    font-weight: 400;
+    margin: 0px;
+    font-weight: 400px;
     font-size: 20px;
 
 }
 
-#add-item-btn {
+.add-item-btn {
     width: 50px;
     height: 50px;
     font-size: 32px;
-    font-weight: 100;
+    font-weight: 100px;
     background: #3C3C3C;
     background-color: white;
     border: 1.5px solid #DEDEDE;
     border-radius: 50%;
-    margin: 0 0 0 150;
+    margin: 0px 0px 0px 150px;
     
 }
 
 #total-order h1 {
     width: 133px;
     margin: 0 auto;
-    padding: 0 0 40 0;
+    padding: 0px 0px 40px 0px;
 }
 
 #total-order{
     display: block;
     width: 500px;
     flex-wrap: wrap;
-    font-family: Smythe;
     margin: auto auto;
-    padding: 0 0 30 0;
+    padding: 0px 0px 30px 0px;
 
 }
 
 #order-items{
     display: block;
     width: 500px;
-    font-family: Smythe;
-    margin: 0 auto 30 auto;
-    padding: 30 0;
+    margin: 0px auto 30px auto;
+    padding: 30px 0px;
     border-bottom: 2px solid #393333
 
 }
@@ -131,11 +121,10 @@ h3 {
 .item-content-sum {
     display: flex;
     align-items: center;
-    font-family: Smythe;
 }
 
-#remove-btn{
-    font-family: Smythe;
+.remove-btn{
+    font-family: inherit;
     background-color: white;
     color: #BBBBBB;
     border: none;
@@ -143,14 +132,14 @@ h3 {
 }
 
 #total-order #price {
-    margin: 0 0 0 0;
+    margin: 0px 0px 0px 0px;
     margin-left: auto;
 
 }
 
-#name{
+.name{
     font-size: 30px;
-    margin: 0 0 0 0;
+    margin: 0px 0px 0px 0px;
 
 }
 
@@ -163,16 +152,15 @@ h3 {
 #complete-order{
     display: flex;
     flex-wrap: wrap;
-    margin-top: 30;
+    margin-top: 30px;
 }
-#complete-order-btn ,#pay-btn{
+.complete-order-btn {
     flex-basis: 100%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
-    color: white;
+    color: white;    
     font-family: Verdana;
     font-size: 16px;
-    height: 60;
+    height: 60px;
     border-radius: 3px;
     border: none;
     background: #16DB99;
@@ -181,62 +169,55 @@ h3 {
 
 #card-details{
         font-family: Verdana;
-        font-weight: 700;
+        font-weight:700;
         font-size: 24px;
         position: fixed;
-        width: 525;
-        height: 540;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        width: 525px;
+        height: 540px;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
         margin: auto;
         background-color: white;
         border-radius: 4px;
         box-shadow: 5.19px 5.19px 255.44px 0px #00000080;
-
 }
 
 
 #title{
-    display: block;
     width:238px;
-    margin :50 auto;
-    
-    
-    
+    margin :50px auto;
 }
 
 #input-card-info input{
-    font-family: Verdana;
+    font-family: inherit;
     font-size: 20px;
-    width: 475;
-    height: 70;
-    margin-top: 20;
-    padding-left: 26;
-
+    width: 475px;
+    height: 70px;
+    margin-top: 20px;
+    padding-left: 26px;
 }
 
-#input-card-info{
+#input-card-info {
     display: block;
     width:475px;
     height: 300px;
-    margin :50 auto 20 auto;
+    margin :50px auto 20px auto;
     
 }
 
 #error-message{
-    font-family: Verdana;
     color: #AA4A44;
     font-size: large;
-    margin: 20 0 0 2;
-    padding: 0;
+    margin: 20px 0px 0px 2px;
+    padding: 0px;
 }
 
 #pay-btn{
     display: block;
     width:475px;
-    margin :20 auto 50 auto;
+    margin :20px auto 50px auto;
 
 }
 
@@ -249,21 +230,19 @@ input{
 }
 
 #final-msg{
-    font-family: Smythe;
     background: #ECFDF5;
     color: #065F46;
     font-size: 32px;
-    padding: 50 60;
-    margin: 0 auto 40 auto;
-    padding: 0;
-    width: 500;
-    height: 120;
+    padding: 50px 60px;
+    margin: 0px auto 40px auto;
+    padding: 0px;
+    width: 500px;
+    height: 120px;
     border-radius: 3px;
 }
 
 #final-msg p{
-    width: 378;
-    margin: 0 auto;
-    padding: 41 0;
-
+    width: 378px;
+    margin: 0px auto;
+    padding: 41px 0px;
 }
